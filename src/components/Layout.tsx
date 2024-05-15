@@ -1,28 +1,16 @@
 import { Container, Stack } from "@chakra-ui/react";
 import Header from "./Header";
-import { useEffect, useState } from "react";
+import { Product } from "../models/product";
 
 type LayoutProps = {
     children: React.ReactNode;
+    cartItems: Product[];
 };
 
-export default function Layout({ children }: LayoutProps) {
-    const [initted, setInitted] = useState(false);
-    const [cartItems, setCartItems] = useState(0);
-
-    useEffect(() => {
-        if (!initted) {
-            setInitted(true);
-            const ci = localStorage.getItem("cart-items");
-            if (ci && !isNaN(Number(ci))) {
-                setCartItems(Number(ci));
-            }
-        }
-    }, [initted]);
-
+export default function Layout({ children, cartItems }: LayoutProps) {
     return (
-        <Stack w="100vw">
-            <Header cartItems={cartItems} />
+        <Stack w="100vw" mb={8}>
+            <Header cartItems={cartItems.length} />
             <Container maxW="container.lg">{children}</Container>
         </Stack>
     );
