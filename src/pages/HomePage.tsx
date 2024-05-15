@@ -54,16 +54,27 @@ export default function HomePage({
                                 <Stack mt="6" spacing="3">
                                     <Heading size="md">{product.name}</Heading>
                                     {product.hero && (
-                                        <Text fontWeight={700}>
+                                        <Text
+                                            fontWeight={700}
+                                            color={"green.500"}
+                                        >
                                             {product.hero}
                                         </Text>
                                     )}
                                     <Text>{product.detail}</Text>
                                     {product.info && (
-                                        <Text>{product.info}</Text>
+                                        <Text fontWeight={700}>
+                                            {product.info}
+                                        </Text>
                                     )}
                                     <Text color="blue.600" fontSize="2xl">
-                                        $450
+                                        R${" "}
+                                        {Number(
+                                            Number(product.price).toFixed(2)
+                                        ).toLocaleString("pt-BR", {
+                                            minimumFractionDigits: 2,
+                                            maximumFractionDigits: 2,
+                                        })}
                                     </Text>
                                 </Stack>
                             </CardBody>
