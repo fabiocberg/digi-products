@@ -8,12 +8,15 @@ import {
     Text,
 } from "@chakra-ui/react";
 import { TiShoppingCart } from "react-icons/ti";
+import { useNavigate } from "react-router-dom";
 
 type HeaderProps = {
     cartItems: number;
 };
 
 export default function Header({ cartItems }: HeaderProps) {
+    const navigate = useNavigate();
+
     return (
         <Stack bg="blue.500">
             <Container maxW="container.lg">
@@ -22,10 +25,20 @@ export default function Header({ cartItems }: HeaderProps) {
                     alignItems="center"
                     py={2}
                 >
-                    <Heading fontSize="xx-large" mt={0} color="white">
+                    <Heading
+                        fontSize="xx-large"
+                        mt={0}
+                        color="white"
+                        cursor={"pointer"}
+                        onClick={() => navigate("/")}
+                    >
                         Produtos
                     </Heading>
-                    <Box position="relative">
+                    <Box
+                        position="relative"
+                        cursor={"pointer"}
+                        onClick={() => navigate("/carrinho")}
+                    >
                         <Icon as={TiShoppingCart} boxSize={5} fill="white" />
                         {cartItems && cartItems > 0 ? (
                             <Text

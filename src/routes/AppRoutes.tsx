@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "../pages/HomePage";
 import { useEffect, useState } from "react";
 import { Product } from "../models/product";
+import CartPage from "../pages/CartPage";
 
 const AppRoutes = () => {
     const [initted, setInitted] = useState(false);
@@ -38,6 +39,15 @@ const AppRoutes = () => {
                         <HomePage
                             cartItems={cartItems}
                             addItem={addItem}
+                            removeItem={removeItem}
+                        />
+                    }
+                />
+                <Route
+                    path="/carrinho"
+                    element={
+                        <CartPage
+                            cartItems={cartItems}
                             removeItem={removeItem}
                         />
                     }

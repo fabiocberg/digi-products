@@ -69,12 +69,13 @@ export default function HomePage({
                                     )}
                                     <Text color="blue.600" fontSize="2xl">
                                         R${" "}
-                                        {Number(
-                                            Number(product.price).toFixed(2)
-                                        ).toLocaleString("pt-BR", {
-                                            minimumFractionDigits: 2,
-                                            maximumFractionDigits: 2,
-                                        })}
+                                        {Number(product.price).toLocaleString(
+                                            "pt-BR",
+                                            {
+                                                minimumFractionDigits: 2,
+                                                maximumFractionDigits: 2,
+                                            }
+                                        )}
                                     </Text>
                                 </Stack>
                             </CardBody>
